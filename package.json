@@ -2,8 +2,22 @@
   "name": "gilded_rose_angular1",
   "version": "0.0.1",
   "description": "Gilded rosa kata in an angular app",
-  "main": "index.js",
+  "main": "dist/index.js",
   "author": "Ricardo Rivas <richistron@gmail.com>",
   "license": "MIT",
-  "private": true
+  "private": true,
+  "dependencies": {
+    "babel-cli": "6.26.0",
+    "babel-preset-env": "1.7.0",
+    "babel-preset-es2015": "6.24.1",
+    "html-webpack-plugin": "3.2.0",
+    "static-server": "2.2.1",
+    "webpack": "4.16.5",
+    "webpack-cli": "3.1.0"
+  },
+  "scripts": {
+    "webpack-config": "babel --presets es2015 webpack.config.es6.js -o webpack.config.js",
+    "webpack": "yarn webpack-config && webpack",
+    "start": "yarn webpack && node index.js"
+  }
 }
