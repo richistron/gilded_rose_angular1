@@ -23,7 +23,7 @@
   "scripts": {
     "clean-dist": "rm -rf ./dist",
     "webpack-config": "babel --presets es2015 webpack.config.es6.js -o webpack.config.js",
-    "webpack": "webpack",
+    "webpack": "yarn webpack-config && webpack",
     "start": "node index.js"
   }
 }

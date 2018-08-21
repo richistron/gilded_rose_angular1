@@ -3,9 +3,8 @@ import path from 'path';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
-
 const conf = {
-  watch: true,
+  watch: false,
   mode: 'development',
   entry: './src/index.js',
   output: {
@@ -14,7 +13,7 @@ const conf = {
   },
   module: {
     rules: [
-      { test: /\.txt$/, use: 'raw-loader' }
+      { test: /\.txt.html$/, use: 'raw-loader' }
     ]
   },
   plugins: [
@@ -25,7 +24,7 @@ const conf = {
     new CopyWebpackPlugin([
       {from: './lib/service-worker.js', to: './service-worker.js'},
     ]),
-  ],
+  ]
 };
 
 export default conf;

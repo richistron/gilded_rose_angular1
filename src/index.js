@@ -1,22 +1,10 @@
 import angular from 'angular';
 import ngRoute from 'angular-route';
-// import HomePage from './HomePage'
+import routes from './routes';
 
-const app = angular.module('gildedRose', [ngRoute]);
-
-app.component('homePage', {
-  template: '<div> asdfkljadsfkj </div>'
-});
-
-app.config([
-  '$locationProvider',
-  '$routeProvider',
-  ($locationProvider, $routeProvider) => {
-    $locationProvider.hashPrefix('');
-    $routeProvider
-      .when('/', {
-        template: '<home-page></home-page>',
-      });
-  }
+const app = angular.module('gildedRose', [
+  ngRoute,
+  routes.name,
 ]);
 
+export default app;
