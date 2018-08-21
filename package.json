@@ -1,0 +1,9 @@
+{
+  "name": "gilded_rose_angular1",
+  "version": "0.0.1",
+  "description": "Gilded rosa kata in an angular app",
+  "main": "index.js",
+  "author": "Ricardo Rivas <richistron@gmail.com>",
+  "license": "MIT",
+  "private": true
+}
