@@ -7,17 +7,20 @@
   "license": "MIT",
   "private": true,
   "dependencies": {
+    "babel": "6.23.0",
     "babel-cli": "6.26.0",
     "babel-preset-env": "1.7.0",
     "babel-preset-es2015": "6.24.1",
+    "copy-webpack-plugin": "4.5.2",
     "html-webpack-plugin": "3.2.0",
     "static-server": "2.2.1",
     "webpack": "4.16.5",
     "webpack-cli": "3.1.0"
   },
   "scripts": {
+    "clean-dist": "rm -rf ./dist",
     "webpack-config": "babel --presets es2015 webpack.config.es6.js -o webpack.config.js",
-    "webpack": "yarn webpack-config && webpack",
+    "webpack": "yarn clean-dist && yarn webpack-config && webpack",
     "start": "yarn webpack && node index.js"
   }
 }
