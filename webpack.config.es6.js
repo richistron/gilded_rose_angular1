@@ -1,10 +1,11 @@
-import webpack from 'webpack';
+import 'webpack';
 import path from 'path';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 
 const conf = {
+  watch: true,
   mode: 'development',
   entry: './src/index.js',
   output: {
@@ -22,7 +23,7 @@ const conf = {
       template: './src/index.html'
     }),
     new CopyWebpackPlugin([
-      {from: './public/service-worker.js', to: './service-worker.js'}
+      {from: './lib/service-worker.js', to: './service-worker.js'},
     ]),
   ],
 };
