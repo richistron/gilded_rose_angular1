@@ -18,7 +18,15 @@ let conf = {
   },
   module: {
     rules: [
-      { test: /\.txt.html$/, use: 'raw-loader' }
+      { test: /\.txt.html$/, use: 'raw-loader' },
+      {
+        test: /\.scss$/,
+        use: [
+          "style-loader",
+          "css-loader",
+          "sass-loader"
+        ]
+      }
     ]
   },
   plugins: [

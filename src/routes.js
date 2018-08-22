@@ -1,9 +1,9 @@
 import angular from 'angular';
-import homePage from './homePage';
+import layout from './layout';
 
 export default angular.
 module('gildedRose.Routes', [
-  homePage.name
+  layout.name
 ]).
 config([
   '$locationProvider',
@@ -12,7 +12,7 @@ config([
     $locationProvider.hashPrefix('');
     $routeProvider
       .when('/', {
-        template: '<home-page></home-page>',
+        template: '<layout-component page="home"></layout-component>',
       });
   }
 ]);
