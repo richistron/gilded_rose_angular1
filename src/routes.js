@@ -3,16 +3,19 @@ import layout from './layout';
 
 export default angular.
 module('gildedRose.Routes', [
-  layout.name
+  layout
 ]).
 config([
   '$locationProvider',
   '$routeProvider',
   ($locationProvider, $routeProvider) => {
-    $locationProvider.hashPrefix('');
+    $locationProvider.html5Mode({
+      enabled: true,
+      requireBase: false
+    });
     $routeProvider
       .when('/', {
-        template: '<layout-component page="home"></layout-component>',
+        template: '<layout-component></layout-component>',
       });
   }
-]);
+]).name;

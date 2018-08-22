@@ -1,7 +1,8 @@
 import angular from 'angular';
 import template from './template.txt.html';
 
-export default angular.module('gildedRose.homePage', []).
+export default angular.module('gildedRose.homePage', [
+]).
 component('homePage', {
   template: template,
   bindings: {
@@ -10,4 +11,4 @@ component('homePage', {
   controller: [function homePageController() {
     this.testito = this.testito || 'nope';
   }],
-});
+}).name;
