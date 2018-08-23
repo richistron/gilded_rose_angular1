@@ -40,14 +40,4 @@ let conf = {
   ],
 };
 
-if (isDev) {
-  conf = Object.assign(conf, {
-    devServer: {
-      contentBase: path.join(__dirname, 'src'),
-      compress: true,
-      port: 3000,
-    }
-  });
-}
-
 module.exports = conf;

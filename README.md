@@ -85,7 +85,8 @@ yarn install;
 ## Package.json
 
 ```
-yarn dev # webpack-dev-server
+yarn test 
 yarn webpack # compile production
 yarn dist:server # dist server 3000
+yarn dev:server # dev server 3000
 ```
