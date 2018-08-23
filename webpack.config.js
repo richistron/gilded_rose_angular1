@@ -35,7 +35,7 @@ let conf = {
       template: './src/index.html'
     }),
     new CopyWebpackPlugin([
-      {from: './lib/service-worker.js', to: './service-worker.js'},
+      {from: './service-worker.js', to: './service-worker.js'},
     ]),
   ],
 };
