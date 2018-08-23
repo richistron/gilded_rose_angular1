@@ -1,0 +1,7 @@
+{
+  "verbose": true,
+  "bail": true,
+  "browser": true,
+  "testMatch": ["<rootDir>/src/**/*.test.js"],
+  "testPathIgnorePatterns": [ "node_modules/" ]
+}

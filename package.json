@@ -17,6 +17,7 @@
     "copy-webpack-plugin": "4.5.2",
     "css-loader": "1.0.0",
     "html-webpack-plugin": "3.2.0",
+    "jest": "23.5.0",
     "node-sass": "4.9.3",
     "npm-check-updates": "2.14.2",
     "npm-run-parallel": "0.6.0",
@@ -34,6 +35,7 @@
     "webpack:watch": "NODE_ENV=develop webpack -w",
     "static-server": "node index.js",
     "dist:server": "npm-run-parallel webpack:watch static-server",
-    "start": "npm-run-parallel webpack dist:server"
+    "start": "npm-run-parallel webpack dist:server",
+    "test": "jest --config=jest.conf.json"
   }
 }

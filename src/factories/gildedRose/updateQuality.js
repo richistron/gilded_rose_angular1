@@ -1,6 +1,6 @@
 // @see https://github.com/guyroyse/gilded-rose-javascript
 // THE GILDED ROSE KATA
-
+// TODO make this readable and testable
 export default _items => function updateQuality() {
   const items = _items;
   for (var i = 0; i < items.length; i++) {
