@@ -2,7 +2,8 @@ import angular from 'angular';
 import Item from './Item';
 import updateQuality from "./updateQuality";
 
-const createGildedRoseFactory = ( items = [] ) => () => {
+export const createGildedRoseFactory = () => () => {
+  var items = [];
   items.push(new Item('+5 Dexterity Vest', 10, 20));
   items.push(new Item('Aged Brie', 2, 0));
   items.push(new Item('Elixir of the Mongoose', 5, 7));

@@ -1,4 +1,4 @@
-import '../../main.scss';
+// import '../../main.scss';
 import HomePage from '../homePage';
 import angular from 'angular';
 import getUrlName from '../../lib/getUrlName';

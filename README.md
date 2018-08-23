@@ -87,8 +87,5 @@ yarn install;
 ```
 yarn dev # webpack-dev-server
 yarn webpack # compile production
-yarn webpack:watch # compile watch
-yarn static-server # static-server 3000
 yarn dist:server # dist server 3000
-yarn start # not dev not prod / don't use it :P
 ```

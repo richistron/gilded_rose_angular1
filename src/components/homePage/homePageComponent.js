@@ -13,7 +13,7 @@ component('homePage', {
     this.items = items;
 
     this.handleClick = () => {
-      this.items = updateQuality(this.items)();
+      this.items = updateQuality(this.items);
     }
   }],
 }).name;
