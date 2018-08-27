@@ -29,12 +29,12 @@
     "webpack-cli": "3.1.0"
   },
   "scripts": {
-    "webpack": "NODE_ENV=production webpack",
-    "webpack:watch": "NODE_ENV=develop webpack -w",
+    "webpack": "webpack",
+    "webpack:watch:prod": "NODE_ENV=production webpack -w",
+    "webpack:watch:dev": "NODE_ENV=development webpack -w",
     "static-server": "node index.js",
-    "dist:server": "npm-run-parallel webpack:watch static-server",
-    "dev:server": "npm-run-parallel webpack:watch static-server",
-    "start": "npm-run-parallel webpack dist:server",
-    "test": "jest --config=jest.conf.json"
+    "dist:server": "npm-run-parallel webpack:watch:prod static-server",
+    "dev:server": "NODE_ENV=develop npm-run-parallel webpack:watch:dev static-server",
+    "test": "NODE_ENV=test jest --config=jest.conf.json"
   }
 }
