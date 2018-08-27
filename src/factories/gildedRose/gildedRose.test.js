@@ -1,21 +1,21 @@
-import { createGildedRoseFactory } from './gildedRose';
+import { factoryGenerator } from './gildedRose';
 
-describe('createGildedRoseFactory', () => {
+describe('factoryGenerator', () => {
 
   let factory;
-  beforeEach(() => factory = createGildedRoseFactory());
+  beforeEach(() => factory = factoryGenerator());
 
-  it('should exist', () => {
-    expect(typeof factory).toBe('function');
-  });
+  // it('should exist', () => {
+  //   expect(typeof factory).toBe('function');
+  // });
 
   it('should return an object with an items array', () => {
-    expect(typeof factory().items).toEqual('object');
-    expect(factory().items.length).toEqual(6);
+    expect(typeof factory.items).toEqual('object');
+    expect(factory.items.length).toEqual(6);
   });
 
   it('should return an object with a foo prop', () => {
-    expect(typeof factory().updateQuality).toEqual('function');
+    expect(typeof factory.updateQuality).toEqual('function');
   });
 
   describe('updateQuality', () => {
@@ -63,11 +63,11 @@ describe('createGildedRoseFactory', () => {
       const { position, spec1, spec2 } = testItem;
 
       it(testItem.item.name, () => {
-        let items = factory().items;
+        let items = factory.items;
         expect(items[position]).toEqual(testItem.item);
-        items = factory().updateQuality(items);
+        items = factory.updateQuality(items);
         expect(items[position]).toEqual(Object.assign(testItem.item, {quality: spec1.quality, sell_in: spec1.sell_in}));
-        items = factory().updateQuality(items);
+        items = factory.updateQuality(items);
         expect(items[position]).toEqual(Object.assign(testItem.item, {quality: spec2.quality, sell_in: spec2.sell_in}));
       });
 
