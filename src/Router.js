@@ -15,7 +15,7 @@ config([
     });
     $routeProvider
       .when('/', {
-        template: '<layout-component></layout-component>',
+        template: '<layout></layout>',
       });
   }
 ]).name;

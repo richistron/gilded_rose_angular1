@@ -1,19 +1,13 @@
-import angular from 'angular';
 import template from './template.txt.html';
 import gildedRose from '../../factories/gildedRose';
+import createComponent from '../../lib/createComponent';
 
-export default angular.module('gildedRose.homePage', [
-  gildedRose,
-]).
-component('homePage', {
+export default createComponent('homePage', [gildedRose], {
   template: template,
-  bindings: {
-  },
-  controller: ['gildedRoseFactory', function homePageController({updateQuality, items}) {
+  bindings: {},
+  dependencies: ['gildedRoseFactory'],
+  controller: function homePageController({updateQuality, items}) {
     this.items = items;
-
-    this.handleClick = () => {
-      this.items = updateQuality(this.items);
-    }
-  }],
-}).name;
+    this.updateQuality = updateQuality;
+  }
+})

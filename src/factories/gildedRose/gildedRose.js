@@ -10,11 +10,10 @@ items.push(new Item('Sulfuras, Hand of Ragnaros', 0, 80));
 items.push(new Item('Backstage passes to a TAFKAL80ETC concert', 15, 20));
 items.push(new Item('Conjured Mana Cake', 3, 6));
 
-
 export default createFactory('gildedRoseFactory', {
   dependencies: [],
   controller: () => ({
     items,
-    updateQuality,
+    updateQuality: updateQuality(items),
   }),
 });

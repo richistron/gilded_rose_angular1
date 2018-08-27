@@ -1,7 +1,7 @@
 // @see https://github.com/guyroyse/gilded-rose-javascript
 // THE GILDED ROSE KATA
 // TODO make this readable and testable
-export default function updateQuality(items) {
+export default items => () => {
   for (var i = 0; i < items.length; i++) {
     if (items[i].name != 'Aged Brie' && items[i].name != 'Backstage passes to a TAFKAL80ETC concert') {
       if (items[i].quality > 0) {
@@ -48,4 +48,4 @@ export default function updateQuality(items) {
     }
   }
   return items;
-}
+};
