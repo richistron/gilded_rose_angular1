@@ -1,72 +1,75 @@
 import { factoryGenerator } from './gildedRose';
+import Item from './Item';
 
 describe('factoryGenerator', () => {
 
-  let factory;
-  beforeEach(() => factory = factoryGenerator());
-
   it('should return an object with an items array', () => {
-    expect(typeof factory.items).toEqual('object');
-    expect(factory.items.length).toEqual(6);
+    expect(typeof factoryGenerator().items).toEqual('object');
   });
 
   it('should return an object with a foo prop', () => {
-    expect(typeof factory.updateQuality).toEqual('function');
+    expect(typeof factoryGenerator().updateQuality).toEqual('function');
   });
 
   describe('updateQuality', () => {
-    const testItems = [
-      {
-        position: 0,
-        item: {name: "+5 Dexterity Vest", quality: 20, sell_in: 10},
-        spec1: {quality: 19, sell_in: 9},
-        spec2: {quality: 18, sell_in: 8},
-      },
-      {
-        position: 1,
-        item: {name: "Aged Brie", quality: 0, sell_in: 2},
-        spec1: {quality: 1, sell_in: 1},
-        spec2: {quality: 2, sell_in: 0},
-      },
-      {
-        position: 2,
-        item: {name: "Elixir of the Mongoose", quality: 7, sell_in: 5},
-        spec1: {quality: 6, sell_in: 4},
-        spec2: {quality: 5, sell_in: 3},
-      },
-      {
-        position: 3,
-        item: {name: "Sulfuras, Hand of Ragnaros", quality: 80, sell_in: 0},
-        spec1: {quality: 80, sell_in: 0},
-        spec2: {quality: 80, sell_in: 0},
-      },
-      {
-        position: 4,
-        item: {name: "Backstage passes to a TAFKAL80ETC concert", quality: 20, sell_in: 15},
-        spec1: {quality: 21, sell_in: 14},
-        spec2: {quality: 22, sell_in: 13},
-      },
-      {
-        position: 5,
-        item: {name: "Conjured Mana Cake", quality: 6, sell_in: 3},
-        spec1: {quality: 5, sell_in: 2},
-        spec2: {quality: 4, sell_in: 1},
-      },
-    ];
+    it('+5 Dexterity Vest', () => {
+      const factory = factoryGenerator([Item('+5 Dexterity Vest', 10, 20)]);
+      expect(factory.items.length).toBe(1);
+      expect(factory.items[0].quality).toBe(20);
+      expect(factory.items[0].sell_in).toBe(10);
+      factory.updateQuality();
+      expect(factory.items[0].quality).toBe(19);
+      expect(factory.items[0].sell_in).toBe(9);
+    });
 
-    for (const testItem of testItems) {
+    it('Aged Brie', () => {
+      const factory = factoryGenerator([Item('Aged Brie', 2, 0)]);
+      expect(factory.items.length).toBe(1);
+      expect(factory.items[0].quality).toBe(0);
+      expect(factory.items[0].sell_in).toBe(2);
+      factory.updateQuality();
+      expect(factory.items[0].quality).toBe(1);
+      expect(factory.items[0].sell_in).toBe(1);
+    });
 
-      const { position, spec1, spec2 } = testItem;
+    it('Elixir of the Mongoose', () => {
+      const factory = factoryGenerator([Item('Elixir of the Mongoose', 5, 7)]);
+      expect(factory.items.length).toBe(1);
+      expect(factory.items[0].quality).toBe(7);
+      expect(factory.items[0].sell_in).toBe(5);
+      factory.updateQuality();
+      expect(factory.items[0].quality).toBe(6);
+      expect(factory.items[0].sell_in).toBe(4);
+    });
 
-      it(testItem.item.name, () => {
-        let items = factory.items;
-        expect(items[position]).toEqual(testItem.item);
-        items = factory.updateQuality(items);
-        expect(items[position]).toEqual(Object.assign(testItem.item, {quality: spec1.quality, sell_in: spec1.sell_in}));
-        items = factory.updateQuality(items);
-        expect(items[position]).toEqual(Object.assign(testItem.item, {quality: spec2.quality, sell_in: spec2.sell_in}));
-      });
+    it('Sulfuras, Hand of Ragnaros', () => {
+      const factory = factoryGenerator([Item('Sulfuras, Hand of Ragnaros', 0, 80)]);
+      expect(factory.items.length).toBe(1);
+      expect(factory.items[0].quality).toBe(80);
+      expect(factory.items[0].sell_in).toBe(0);
+      factory.updateQuality();
+      expect(factory.items[0].quality).toBe(80);
+      expect(factory.items[0].sell_in).toBe(0);
+    });
 
-    }
+    it('Backstage passes to a TAFKAL80ETC concert', () => {
+      const factory = factoryGenerator([Item('Backstage passes to a TAFKAL80ETC concert', 15, 20)]);
+      expect(factory.items.length).toBe(1);
+      expect(factory.items[0].quality).toBe(20);
+      expect(factory.items[0].sell_in).toBe(15);
+      factory.updateQuality();
+      expect(factory.items[0].quality).toBe(21);
+      expect(factory.items[0].sell_in).toBe(14);
+    });
+
+    it('Conjured Mana Cake', () => {
+      const factory = factoryGenerator([Item('Conjured Mana Cake', 3, 6)]);
+      expect(factory.items.length).toBe(1);
+      expect(factory.items[0].quality).toBe(6);
+      expect(factory.items[0].sell_in).toBe(3);
+      factory.updateQuality();
+      expect(factory.items[0].quality).toBe(5);
+      expect(factory.items[0].sell_in).toBe(2);
+    });
   });
 });
