@@ -5,10 +5,6 @@ describe('factoryGenerator', () => {
   let factory;
   beforeEach(() => factory = factoryGenerator());
 
-  // it('should exist', () => {
-  //   expect(typeof factory).toBe('function');
-  // });
-
   it('should return an object with an items array', () => {
     expect(typeof factory.items).toEqual('object');
     expect(factory.items.length).toEqual(6);
