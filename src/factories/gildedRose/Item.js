@@ -1,7 +1,7 @@
-const Item = (name, sell_in, quality) => ({
+const Item = (name, sellIn, quality) => ({
   name,
-  sell_in,
-  quality,
-});
+  sell_in: sellIn,
+  quality
+})
 
-export default Item;
+export default Item

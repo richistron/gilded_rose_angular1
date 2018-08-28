@@ -5,18 +5,40 @@ require 'thor'
 class CI < Thor
   include Thor::Actions
 
-  desc 'build', 'creates docker image'
-
   method_option :push, type: :boolean, aliases: '-p'
+  method_option :ignore_tests, type: :boolean
+  method_option :ignore_build, type: :boolean
+  method_option :ignore_lint, type: :boolean
 
+  desc 'build', 'creates docker image'
   def build
-    run "docker build -t  #{get_image_name} ."
-    run "docker push #{get_image_name}" if options[:push]
+    run( "docker build -t  #{get_image_name} ." ) unless options[:ignore_build]
+    lint unless options[:ignore_lint]
+    test unless options[:ignore_tests]
+    push if options[:push]
+  end
+
+  desc 'push', 'upload docker image'
+  def push
+    run "docker push #{get_image_name}"
+  end
+
+  desc 'test', 'run unit tests'
+  def test
+    run "docker run --rm #{get_image_name} npm run test"
+  end
+
+  desc 'lint', 'eslint'
+  def lint
+    unless run "docker run --rm #{get_image_name} npm run eslint"
+      exit 1
+    end
   end
 
   private
   def get_branch_name
-    @branch ||= run( 'git rev-parse --abbrev-ref HEAD', capture: true ).gsub(/\n/, '')
+    @branch ||= run( 'git rev-parse --abbrev-ref HEAD', capture: true )
+                  .gsub(/\n/, '')
     return 'latest' if @branch === 'master'
     @branch
   end

@@ -1,3 +1,3 @@
-import homePageComponent from './homePageComponent';
+import homePageComponent from './homePageComponent'
 
-export default homePageComponent;
+export default homePageComponent

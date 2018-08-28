@@ -1,3 +1,3 @@
-import Urls from './Urls';
+import Urls from './Urls'
 
-export default url => Urls.get(url) || '';
+export default url => Urls.get(url) || ''

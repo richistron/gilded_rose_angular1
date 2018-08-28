@@ -1,15 +1,15 @@
-var webpack = require('webpack');
-var path = require('path');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
-var CopyWebpackPlugin = require('copy-webpack-plugin');
+require('webpack')
+var path = require('path')
+var HtmlWebpackPlugin = require('html-webpack-plugin')
+var CopyWebpackPlugin = require('copy-webpack-plugin')
 
-var env = process.env.NODE_ENV;
+var env = process.env.NODE_ENV
 
-var isDev = env === 'development';
-var isProd = env === 'production';
+// var isDev = env === 'development'
+var isProd = env === 'production'
 
 let conf = {
-  watch: false ,
+  watch: false,
   mode: isProd ? 'production' : 'development',
   entry: './src/index.js',
   output: {
@@ -22,9 +22,9 @@ let conf = {
       {
         test: /\.scss$/,
         use: [
-          "style-loader",
-          "css-loader",
-          "sass-loader"
+          'style-loader',
+          'css-loader',
+          'sass-loader'
         ]
       }
     ]
@@ -35,9 +35,9 @@ let conf = {
       template: './src/index.html'
     }),
     new CopyWebpackPlugin([
-      {from: './service-worker.js', to: './service-worker.js'},
-    ]),
-  ],
-};
+      {from: './service-worker.js', to: './service-worker.js'}
+    ])
+  ]
+}
 
-module.exports = conf;
+module.exports = conf

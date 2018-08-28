@@ -17,11 +17,15 @@
     "copy-webpack-plugin": "4.5.2",
     "css-loader": "1.0.0",
     "eslint": "^5.4.0",
+    "eslint-config-standard": "^11.0.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-node": "^7.0.1",
+    "eslint-plugin-promise": "^4.0.0",
+    "eslint-plugin-standard": "^3.1.0",
     "html-webpack-plugin": "3.2.0",
     "jest": "23.5.0",
     "node-sass": "4.9.3",
-    "npm-check-updates": "2.14.2",
-    "npm-run-parallel": "0.6.0",
+    "npm-run-parallel": "^0.6.0",
     "raw-loader": "0.5.1",
     "sass-loader": "7.1.0",
     "static-server": "2.2.1",
@@ -33,9 +37,12 @@
     "webpack": "webpack",
     "webpack:watch:prod": "NODE_ENV=production webpack -w",
     "webpack:watch:dev": "NODE_ENV=development webpack -w",
-    "dist:server": "npm-run-parallel webpack:watch:prod start",
-    "dev:server": "NODE_ENV=develop npm-run-parallel webpack:watch:dev start",
+    "dist:server": "npm-run-parallel webpack:watch:prod server",
+    "dev:server": "NODE_ENV=develop npm-run-parallel webpack:watch:dev server",
     "test": "NODE_ENV=test jest --config=jest.conf.json",
-    "start": "node index.js"
+    "server": "node index.js",
+    "start": "node index.js",
+    "publish:docker": "./ci build -p",
+    "eslint": "eslint --config=.eslintrc ."
   }
 }

@@ -69,7 +69,7 @@ function updateQuality() {
 
 ```
 - node v9.11.*
-- yarn
+- ruby 2.*
 ```
 
 ## Installation
@@ -79,14 +79,21 @@ git clone git@github.com:richistron/gilded_rose_angular1.git
 
 cd gilded_rose_angular1
 
-yarn install;
+npm install;
 ```
 
 ## Package.json
 
 ```
-yarn test 
-yarn webpack # compile production
-yarn dist:server # dist server 3000
-yarn dev:server # dev server 3000
+npm test 
+npm webpack # compile production
+npm dist:server # dist server 3000
+npm dev:server # dev server 3000
+```
+
+## Docker
+
+```
+docker pull richistron/gilded_rose_angular1
+docker run  -p 3000:3000 -it richistron/gilded_rose_angular1
 ```
