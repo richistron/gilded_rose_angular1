@@ -1,5 +1,5 @@
-import { factoryGenerator } from './gildedRose';
-import Item from './Item';
+import { factoryGenerator } from './gildedRose'
+import Item from './Item'
 
 describe('factoryGenerator', () => {
 

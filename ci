@@ -28,7 +28,8 @@ class CI < Thor
 
   private
   def get_branch_name
-    @branch ||= run( 'git rev-parse --abbrev-ref HEAD', capture: true ).gsub(/\n/, '')
+    @branch ||= run( 'git rev-parse --abbrev-ref HEAD', capture: true )
+                  .gsub(/\n/, '')
     return 'latest' if @branch === 'master'
     @branch
   end

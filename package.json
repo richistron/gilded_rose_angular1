@@ -17,6 +17,11 @@
     "copy-webpack-plugin": "4.5.2",
     "css-loader": "1.0.0",
     "eslint": "^5.4.0",
+    "eslint-config-standard": "^11.0.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-node": "^7.0.1",
+    "eslint-plugin-promise": "^4.0.0",
+    "eslint-plugin-standard": "^3.1.0",
     "html-webpack-plugin": "3.2.0",
     "jest": "23.5.0",
     "node-sass": "4.9.3",
@@ -37,6 +42,7 @@
     "test": "NODE_ENV=test jest --config=jest.conf.json",
     "server": "node index.js",
     "start": "node index.js",
-    "publish:docker": "./ci build -p"
+    "publish:docker": "./ci build -p",
+    "eslint": "eslint --config=.eslintrc ."
   }
 }
