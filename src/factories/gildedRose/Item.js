@@ -1,6 +1,6 @@
-const Item = (name, sell_in, quality) => ({
+const Item = (name, sellIn, quality) => ({
   name,
-  sell_in,
+  sell_in: sellIn,
   quality
 })
 

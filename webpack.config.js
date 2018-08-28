@@ -1,11 +1,11 @@
-var webpack = require('webpack')
+require('webpack')
 var path = require('path')
 var HtmlWebpackPlugin = require('html-webpack-plugin')
 var CopyWebpackPlugin = require('copy-webpack-plugin')
 
 var env = process.env.NODE_ENV
 
-var isDev = env === 'development'
+// var isDev = env === 'development'
 var isProd = env === 'production'
 
 let conf = {
