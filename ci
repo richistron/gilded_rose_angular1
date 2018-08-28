@@ -5,13 +5,23 @@ require 'thor'
 class CI < Thor
   include Thor::Actions
 
-  desc 'build', 'creates docker image'
-
   method_option :push, type: :boolean, aliases: '-p'
 
+  desc 'build', 'creates docker image'
   def build
     run "docker build -t  #{get_image_name} ."
+    test
+    push
+  end
+
+  desc 'push', 'upload docker image'
+  def push
     run "docker push #{get_image_name}" if options[:push]
+  end
+
+  desc 'test', 'run unit tests'
+  def test
+    run "docker run --rm #{get_image_name} npm run test"
   end
 
   private
