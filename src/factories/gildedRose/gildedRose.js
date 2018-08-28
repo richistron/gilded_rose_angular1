@@ -2,8 +2,8 @@ import Item from './Item';
 import updateQuality from './updateQuality';
 import createFactory from '../../lib/createFactory';
 
-const itemsIterator = [];
-itemsIterator[Symbol.iterator] = function* () {
+const items = [];
+items[Symbol.iterator] = function* () {
   yield Item('+5 Dexterity Vest', 10, 20);
   yield Item('Aged Brie', 2, 0);
   yield Item('Elixir of the Mongoose', 5, 7);
@@ -12,10 +12,7 @@ itemsIterator[Symbol.iterator] = function* () {
   yield Item('Conjured Mana Cake', 3, 6);
 };
 
-const getItems = () => {
-  const items = [...itemsIterator];
-  return items;
-};
+const getItems = () => [...items];
 
 export const factoryGenerator = (items = getItems(), _updateQuality = updateQuality) => {
   return {
