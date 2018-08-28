@@ -8,10 +8,12 @@ class CI < Thor
   method_option :push, type: :boolean, aliases: '-p'
   method_option :ignore_tests, type: :boolean
   method_option :ignore_build, type: :boolean
+  method_option :ignore_lint, type: :boolean
 
   desc 'build', 'creates docker image'
   def build
     run( "docker build -t  #{get_image_name} ." ) unless options[:ignore_build]
+    lint unless options[:ignore_lint]
     test unless options[:ignore_tests]
     push if options[:push]
   end
@@ -24,6 +26,13 @@ class CI < Thor
   desc 'test', 'run unit tests'
   def test
     run "docker run --rm #{get_image_name} npm run test"
+  end
+
+  desc 'lint', 'eslint'
+  def lint
+    unless run "docker run --rm #{get_image_name} npm run eslint"
+      exit 1
+    end
   end
 
   private
