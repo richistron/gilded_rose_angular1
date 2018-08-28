@@ -1,7 +1,7 @@
 const Item = (name, sell_in, quality) => ({
   name,
   sell_in,
-  quality,
-});
+  quality
+})
 
-export default Item;
+export default Item

@@ -1,3 +1,3 @@
-import gildedRose from './gildedRose';
+import gildedRose from './gildedRose'
 
-export default gildedRose;
+export default gildedRose

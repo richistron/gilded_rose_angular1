@@ -27,7 +27,7 @@ export default items => () => {
       }
     }
     if (items[i].name != 'Sulfuras, Hand of Ragnaros') {
-      items[i].sell_in = items[i].sell_in - 1;
+      items[i].sell_in = items[i].sell_in - 1
     }
     if (items[i].sell_in < 0) {
       if (items[i].name != 'Aged Brie') {
@@ -47,5 +47,5 @@ export default items => () => {
       }
     }
   }
-  return items;
-};
+  return items
+}
