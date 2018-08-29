@@ -2,7 +2,7 @@
 
 require 'thor'
 
-class CI < Thor
+class Tools < Thor
   include Thor::Actions
 
   method_option :push, type: :boolean, aliases: '-p'
@@ -12,7 +12,7 @@ class CI < Thor
 
   desc 'build', 'creates docker image'
   def build
-    run( "docker build -t  #{get_image_name} ." ) unless options[:ignore_build]
+    do_build unless options[:ignore_build]
     lint unless options[:ignore_lint]
     test unless options[:ignore_tests]
     push if options[:push]
@@ -25,7 +25,9 @@ class CI < Thor
 
   desc 'test', 'run unit tests'
   def test
-    run "docker run --rm #{get_image_name} npm run test"
+    unless run "docker run --rm #{get_image_name} npm run test"
+      exit 1
+    end
   end
 
   desc 'lint', 'eslint'
@@ -46,6 +48,12 @@ class CI < Thor
   def get_image_name
     "richistron/gilded_rose_angular1:#{ get_branch_name }"
   end
+
+  def do_build
+    unless run( "docker build -t  #{get_image_name} ." )
+      exit 1
+    end
+  end
 end
 
-CI.start(ARGV)
+Tools.start(ARGV)
